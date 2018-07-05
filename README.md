@@ -18,7 +18,14 @@ mounted into the docker image each time you want to run this API.
 
 `docker run -it -v ~/models:/notebooks wqael/tf_objdet:gpu bash`
 
-4. From here on, execute from inside docker's bash.
+4. From here on, execute from inside docker's bash, e.g.,
+
+```sh
+# cd /notebooks/models/
+# ls
+AUTHORS  CODEOWNERS  CONTRIBUTING.md  ISSUE_TEMPLATE.md  LICENSE  README.md  WORKSPACE  official  research  samples  tutorials
+```
+
 5. Follow the COCO API installation in [1]
 6. Follow the Protobuf compilation in [1]
 7. Add Libraries to PYTHONPATH as [1]
