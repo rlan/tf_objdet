@@ -9,7 +9,7 @@ mounted into the docker image each time you want to run this API.
 
 ## Steps
 
-1. Pull the docker image. (Dockerfile)[docker-gpu/Dockerfile]
+1. Pull the docker image. [Dockerfile](docker-gpu/Dockerfile)
 
 `docker pull wqael/tf_objdet:gpu`
 
