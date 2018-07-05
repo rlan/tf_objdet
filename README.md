@@ -9,9 +9,14 @@ mounted into the docker image each time you want to run this API.
 
 ## Steps
 
-1. Pull the docker image:
+1. Pull the docker image. (Dockerfile)[docker-gpu/Dockerfile]
 
 `docker pull wqael/tf_objdet:gpu`
+
+[![](https://images.microbadger.com/badges/image/wqael/tf_objdet:gpu.svg)](https://microbadger.com/images/wqael/tf_objdet:gpu)
+[![](https://images.microbadger.com/badges/commit/wqael/tf_objdet:gpu.svg)](https://microbadger.com/images/wqael/tf_objdet:gpu)
+![](https://img.shields.io/docker/automated/wqael/tf_objdet.svg)
+![](https://img.shields.io/docker/build/wqael/tf_objdet.svg)
 
 2. Download the tensorflow/model project: https://github.com/tensorflow/models
 3. Mount the `models` folder into the docker image.
