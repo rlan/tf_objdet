@@ -1,13 +1,11 @@
 # Object Detection API of TensorFlow
 
-This document describes procedures to install [1]. There are roughly 2 stages:
+This document describes procedures to install and run [1] with a companion docker image. The companion docker image contains all the software dependencies. For runtime, repo of [1] sits on the host system and is mounted into the docker image.
 
-1. A companion docker image, which already contains all the software 
-dependencies.
-2. From inside the docker image, prepared a local code folder, which will be 
-mounted into the docker image each time you want to run this API.
+[1] https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/installation.md
 
-## Steps
+
+## Installation
 
 1. Pull the docker image. [Dockerfile](docker-gpu/Dockerfile).
 
@@ -23,14 +21,14 @@ docker pull wqael/tf_objdet:gpu
 2. Download the tensorflow/model project: https://github.com/tensorflow/models
 3. Mount the `models` folder into the docker image.
 
-```sh
-docker run -it -v ~/models:/notebooks wqael/tf_objdet:gpu bash
+```
+docker run -it -p 8888:8888 -p 6006:6006 -v ~/models:/notebooks wqael/tf_objdet:gpu bash
 ```
 
 4. From here on, execute from inside docker's bash, e.g.,
 
-```sh
-# cd /notebooks/models/
+```
+# cd /notebooks/
 # ls
 AUTHORS  CODEOWNERS  CONTRIBUTING.md  ISSUE_TEMPLATE.md  LICENSE  README.md  WORKSPACE  official  research  samples  tutorials
 ```
@@ -40,7 +38,26 @@ AUTHORS  CODEOWNERS  CONTRIBUTING.md  ISSUE_TEMPLATE.md  LICENSE  README.md  WOR
 7. Add Libraries to PYTHONPATH as [1]
 8. "Testing the Installation" as [1]
 
-Installatoin done. From now on, start from step 3 whenever you want to run the API.
 
+## Run-time
 
-[1] https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/installation.md
+1. Mount the `models` folder into the docker image.
+
+```
+docker run -it -p 8888:8888 -p 6006:6006 -v ~/models:/notebooks wqael/tf_objdet:gpu bash
+```
+
+4. From here on, execute from inside docker's bash, e.g.,
+
+```
+cd /notebooks/research
+# From tensorflow/models/research/
+export PYTHONPATH=$PYTHONPATH:`pwd`:`pwd`/slim
+```
+
+5. (Optional) Launch jupyter
+
+```
+cd /notebooks
+jupyter notebook --allow-root
+```
